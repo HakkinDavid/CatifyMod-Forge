@@ -1,7 +1,7 @@
 package org.daylight;
 
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.renderer.MultiBufferSource;
 
 public interface IElementWVertexConsumerProvider {
-    VertexConsumerProvider.Immediate getVertexConsumers();
+    MultiBufferSource.BufferSource getVertexConsumers();
 }

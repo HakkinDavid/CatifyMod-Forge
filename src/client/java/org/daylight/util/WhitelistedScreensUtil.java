@@ -1,10 +1,9 @@
 package org.daylight.util;
 
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
-import net.minecraft.client.gui.screen.ingame.InventoryScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import org.daylight.config.ConfigHandler;
-import org.daylight.replacements.FabricSetConfigValue;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,7 +18,7 @@ public class WhitelistedScreensUtil {
         whitelistedScreens.clear();
 
         whitelistedScreens.add(InventoryScreen.class);
-        whitelistedScreens.add(CreativeInventoryScreen.class);
+        whitelistedScreens.add(CreativeModeInventoryScreen.class);
 
         Optional<Class<? extends Screen>> screen = findScreenClass("de.hysky.skyblocker.skyblock.item.SkyblockInventoryScreen");
         screen.ifPresent(whitelistedScreens::add);

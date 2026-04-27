@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[62,)"
+license="CC0-1.0"
+
+[[mods]]
+modId="catify"
+version="${file.jarVersion}"
+displayName="Catify"
+authors="Daylight"
+description='''
+A mod that turns your player model into a cat! :D
+'''
+
+[[dependencies.catify]]
+modId="forge"
+mandatory=true
+versionRange="[62,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.catify]]
+modId="minecraft"
+mandatory=true
+versionRange="[26.1,26.2)"
+ordering="NONE"
+side="BOTH"

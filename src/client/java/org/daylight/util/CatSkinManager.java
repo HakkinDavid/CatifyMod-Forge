@@ -1,6 +1,6 @@
 package org.daylight.util;
 
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.Minecraft;
 import org.daylight.config.ConfigHandler;
 
 import java.io.File;
@@ -19,12 +19,12 @@ public class CatSkinManager {
     public static final CopyOnWriteArrayList<String> ALL_VARIANTS = new CopyOnWriteArrayList<>();
 
     public static void startWatcher() {
-        String basePath = MinecraftClient.getInstance().runDirectory.getAbsolutePath() + "/data/catify/cat_enitity_skins";
+        String basePath = Minecraft.getInstance().gameDirectory.getAbsolutePath() + "/data/catify/cat_enitity_skins";
         Path dir = Paths.get(basePath);
 
         // Mkdirs
         dir.toFile().mkdirs();
-        new File(MinecraftClient.getInstance().runDirectory.getAbsolutePath() + "/data/catify/cat_hand_skins").mkdirs();
+        new File(Minecraft.getInstance().gameDirectory.getAbsolutePath() + "/data/catify/cat_hand_skins").mkdirs();
 
         Thread watcherThread = new Thread(new CustomSkinWatcher(dir, DYNAMIC_VARIANTS) {
             @Override
@@ -66,7 +66,7 @@ public class CatSkinManager {
 
     public static void setupCustomSkin() {
         if(!ConfigHandler.catVariantVanilla.get()) {
-            if(!PlayerToCatReplacer.setCustomCatEntityTexture(MinecraftClient.getInstance().player, ConfigHandler.catVariant.get())) {
+            if(!PlayerToCatReplacer.setCustomCatEntityTexture(Minecraft.getInstance().player, ConfigHandler.catVariant.get())) {
                 ConfigHandler.catVariant.set("JELLIE");
                 ConfigHandler.catVariantVanilla.set(true);
                 PlayerToCatReplacer.setLocalCatVariant(CatVariantUtils.deserializeVariant(ConfigHandler.catVariant.getCached()));

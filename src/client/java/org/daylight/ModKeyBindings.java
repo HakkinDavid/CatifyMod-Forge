@@ -1,44 +1,47 @@
 package org.daylight;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.Window;
-import net.minecraft.util.Identifier;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.Identifier;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import org.daylight.util.WhitelistedScreensUtil;
 
 public class ModKeyBindings {
-    private static final KeyBinding.Category CATEGORY = KeyBinding.Category.create(Identifier.of(CatifyMod.MOD_ID, "main_category"));
-
-    public static KeyBinding CHANGE_SCREEN_WHITELIST_STATE;
-
-    private static boolean prevWhitelistDown = false;
+    public static KeyMapping CHANGE_SCREEN_WHITELIST_STATE;
 
     public static void register() {
-        CHANGE_SCREEN_WHITELIST_STATE = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        MinecraftForge.EVENT_BUS.register(ModKeyBindings.class);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
+        KeyMapping.Category category = KeyMapping.Category.register(
+                Identifier.fromNamespaceAndPath(CatifyMod.MOD_ID, "main_category")
+        );
+
+        CHANGE_SCREEN_WHITELIST_STATE = new KeyMapping(
                 "key." + CatifyModClient.MOD_ID + ".change_screen_whitelist_state",
-                InputUtil.Type.KEYSYM,
-                InputUtil.UNKNOWN_KEY.getCode(),
-                CATEGORY
-        ));
+                InputConstants.Type.KEYSYM,
+                InputConstants.UNKNOWN.getValue(),
+                category
+        );
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client == null || client.getWindow() == null) return;
-            Window window = client.getWindow();
+        event.register(CHANGE_SCREEN_WHITELIST_STATE);
+    }
 
-            InputUtil.Key whitelistScreenKey = KeyBindingHelper.getBoundKeyOf(CHANGE_SCREEN_WHITELIST_STATE);
-            if (whitelistScreenKey.getCategory() == InputUtil.Type.KEYSYM) {
-                if(whitelistScreenKey.getCode() != -1) {
-                    boolean down = InputUtil.isKeyPressed(window, whitelistScreenKey.getCode());
+    @SubscribeEvent
+    public static void onClientTick(TickEvent.ClientTickEvent.Post event) {
+        if (CHANGE_SCREEN_WHITELIST_STATE == null) return;
 
-                    if (down && !prevWhitelistDown) {
-                        WhitelistedScreensUtil.toggleScreen(MinecraftClient.getInstance().currentScreen);
-                    }
-                    prevWhitelistDown = down;
-                }
-            }
-        });
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null) return;
+
+        while (CHANGE_SCREEN_WHITELIST_STATE.consumeClick()) {
+            WhitelistedScreensUtil.toggleScreen(mc.screen);
+        }
     }
 }
