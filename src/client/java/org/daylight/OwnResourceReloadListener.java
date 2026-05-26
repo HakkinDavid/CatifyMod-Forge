@@ -38,7 +38,7 @@ public class OwnResourceReloadListener extends SimplePreparableReloadListener<Vo
         Path outputDir = createOutputDir("example_cats");
 
         for (String name : CatSkinManager.STATIC_VARIANTS) {
-            Identifier id = Identifier.withDefaultNamespace("textures/entity/cat/" + name + ".png");
+            Identifier id = Identifier.fromNamespaceAndPath("minecraft", "textures/entity/cat/" + name + ".png");
             copyResource(manager, id, outputDir, name);
         }
     }

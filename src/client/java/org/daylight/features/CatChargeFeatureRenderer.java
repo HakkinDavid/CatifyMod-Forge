@@ -1,24 +1,23 @@
 package org.daylight.features;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-import net.minecraft.client.render.entity.feature.EnergySwirlOverlayFeatureRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.model.CatEntityModel;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
-import net.minecraft.client.render.entity.model.LoadedEntityModels;
-import net.minecraft.client.render.entity.state.CatEntityRenderState;
-import net.minecraft.client.render.entity.state.EntityRenderState;
-import net.minecraft.client.render.entity.state.LivingEntityRenderState;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.Identifier;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.entity.layers.EnergySwirlLayer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.model.animal.feline.AdultCatModel;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.state.CatRenderState;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.resources.Identifier;
 import org.daylight.CustomCatState;
 import org.daylight.IRenderableFeature;
 import org.daylight.config.Data;
@@ -29,11 +28,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 public class CatChargeFeatureRenderer<S extends EntityRenderState>
-        extends EnergySwirlOverlayFeatureRenderer<CatEntityRenderState, CatEntityModel> {
+        extends EnergySwirlLayer<CatRenderState, AdultCatModel> {
     private final Identifier texture;
-    private final CatEntityModel model;
+    private final AdultCatModel model;
 
     public static class CatChargeData {
         public boolean chargeActive = false;
@@ -44,21 +43,21 @@ public class CatChargeFeatureRenderer<S extends EntityRenderState>
     public static final Map<UUID, CatChargeData> CHARGE_DATA = new HashMap<>();
 
     public static CatChargeData getChargeData(Entity entity) {
-        return CHARGE_DATA.computeIfAbsent(entity.getUuid(), k -> new CatChargeData());
+        return CHARGE_DATA.computeIfAbsent(entity.getUUID(), k -> new CatChargeData());
     }
 
     public CatChargeFeatureRenderer(
-            FeatureRendererContext<CatEntityRenderState, CatEntityModel> context,
-            LoadedEntityModels loader,
+            RenderLayerParent<CatRenderState, AdultCatModel> context,
+            EntityModelSet loader,
             Identifier texture
     ) {
         super(context);
         this.texture = texture;
-        this.model = new CatEntityModel(loader.getModelPart(EntityModelLayers.CAT));
+        this.model = new AdultCatModel(loader.bakeLayer(ModelLayers.CAT));
     }
 
     @Override
-    protected boolean shouldRender(CatEntityRenderState state) {
+    protected boolean isPowered(CatRenderState state) {
         if(state instanceof CustomCatState customCatState) {
             UUID entityId = customCatState.catmodel$getCurrentEntityId();
             if (entityId == null) return false;
@@ -71,8 +70,6 @@ public class CatChargeFeatureRenderer<S extends EntityRenderState>
         return false;
     }
 
-    private CatEntityRenderState currentState = null;
-
     public static float globalProgress = 0;
     public static void moveGlobalTextureForward(float tickDelta) {
         globalProgress += tickDelta * 0.008f;
@@ -82,58 +79,31 @@ public class CatChargeFeatureRenderer<S extends EntityRenderState>
     }
 
     @Override
-    public float getEnergySwirlX(float partialAge) {
-        if(true) return globalProgress;
-//        if(true) return (partialAge * 0.01F) % 1.0F;
-        if(currentState instanceof CustomCatState customCatState) {
-            UUID entityId = customCatState.catmodel$getCurrentEntityId();
-            if (entityId == null) return 0f;
-            Entity entity = PlayerToCatReplacer.findAsCat(entityId);
-            if (entity == null) return 0f;
-
-            CatChargeData data = getChargeData(entity);
-            if (data.customDelta != null) {
-                data.chargeProgress += data.customDelta * 0.008f;
-            } else {
-                data.chargeProgress += partialAge * 0.008f;
-            }
-            return data.chargeProgress;
-        } return 0;
+    protected float xOffset(float partialAge) {
+        return globalProgress;
     }
 
-    public void customRender(MatrixStack matrices, OrderedRenderCommandQueue queue, int light, CatEntityRenderState state, float limbAngle, float limbDistance) {
-//        this.currentState = state; // temporary
-
-//        if (state instanceof CustomCatState custom) {
-//            float progress = (state.age + limbAngle) * 0.01f;
-//            custom.catmodel$setChargeProgress(progress);
-//        }
-
+    public void customRender(PoseStack matrices, SubmitNodeCollector queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
         internalRender(matrices, queue, light, state, limbAngle, limbDistance);
-//        this.currentState = null;
     }
 
-    private void internalRender(MatrixStack matrices, OrderedRenderCommandQueue queue, int light, CatEntityRenderState state, float limbAngle, float limbDistance) {
-        if(state instanceof CatEntityRenderState catEntityRenderState && this instanceof IRenderableFeature<?> renderableFeature) {
-            if (this.shouldRender(catEntityRenderState)) {
-                CatEntityModel entityModel = this.getEnergySwirlModel();
-                entityModel.setAngles(catEntityRenderState);
-                renderableFeature.catify$render(matrices, queue, light, state, limbAngle, limbDistance);
-//                entityModel.render(matrices, queue, light, OverlayTexture.DEFAULT_UV, -8355712);
+    private void internalRender(PoseStack matrices, SubmitNodeCollector queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+        if(state instanceof CatRenderState catEntityRenderState && this instanceof IRenderableFeature<?> renderableFeature) {
+            if (this.isPowered(catEntityRenderState)) {
+                AdultCatModel entityModel = this.model();
+                entityModel.setupAnim(catEntityRenderState);
+                ((IRenderableFeature<CatRenderState>) renderableFeature).catify$render(matrices, queue, light, state, limbAngle, limbDistance);
             }
         }
     }
 
     @Override
-    public Identifier getEnergySwirlTexture() {
+    protected Identifier getTextureLocation() {
         return texture;
     }
 
     @Override
-    protected CatEntityModel getEnergySwirlModel() {
+    protected AdultCatModel model() {
         return model;
     }
-
-    // something "synthetic" in sources too
 }
-

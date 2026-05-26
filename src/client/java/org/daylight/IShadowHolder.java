@@ -1,11 +1,10 @@
 package org.daylight;
 
-import net.minecraft.client.render.entity.state.CatEntityRenderState;
-import net.minecraft.client.render.entity.state.EntityRenderState;
-import org.spongepowered.asm.mixin.Shadow;
+import net.minecraft.client.renderer.entity.state.CatRenderState;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 
 public interface IShadowHolder {
-    float getShadowRadiusAccessor(CatEntityRenderState state);
+    float getShadowRadiusAccessor(CatRenderState state);
 
-    float getShadowOpacityAccessor(CatEntityRenderState state);
+    float getShadowOpacityAccessor(CatRenderState state);
 }

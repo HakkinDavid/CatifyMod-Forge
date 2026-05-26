@@ -1,20 +1,19 @@
 package org.daylight.mixin.client;
 
-import net.minecraft.client.gui.render.SpecialGuiElementRenderer;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.gui.render.pip.PictureInPictureRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import org.daylight.IElementWVertexConsumerProvider;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(SpecialGuiElementRenderer.class)
+@Mixin(value = PictureInPictureRenderer.class, remap = false)
 public class SpecialGuiElementRendererAccessor implements IElementWVertexConsumerProvider {
     @Shadow
     @Final
-    protected VertexConsumerProvider.Immediate vertexConsumers;
+    protected MultiBufferSource.BufferSource bufferSource;
 
-    public VertexConsumerProvider.Immediate getVertexConsumers() {
-        return this.vertexConsumers;
+    public MultiBufferSource.BufferSource getVertexConsumers() {
+        return this.bufferSource;
     }
 }

@@ -16,30 +16,18 @@ base {
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 sourceSets {
-    client {
-        java.srcDir 'src/client/java'
-        resources.srcDir 'src/client/resources'
-        java.exclude('org/daylight/mixin/**')
-        java.exclude('org/daylight/features/**')
-        java.exclude('org/daylight/IFeatureManager.java')
-        java.exclude('org/daylight/IRenderableFeature.java')
-        java.exclude('org/daylight/CustomCatState.java')
-        java.exclude('org/daylight/CustomCatTextureHolder.java')
-        java.exclude('org/daylight/IShadowHolder.java')
-        java.exclude('org/daylight/IElementWVertexConsumerProvider.java')
-        java.exclude('org/daylight/IModifiableGuiElement.java')
-        java.exclude('org/daylight/util/ModStateUtils.java')
-        java.exclude('org/daylight/util/StateStorage.java')
-        compileClasspath += sourceSets.main.output + configurations.compileClasspath
-        runtimeClasspath += output + compileClasspath + configurations.runtimeClasspath
+    main {
+        java {
+            srcDirs = ['src/main/java', 'src/client/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources', 'src/client/resources']
+        }
     }
 }
 
 configurations {
-    clientImplementation.extendsFrom(implementation)
-    clientCompileOnly.extendsFrom(compileOnly)
-    clientRuntimeOnly.extendsFrom(runtimeOnly)
-    clientAnnotationProcessor.extendsFrom(annotationProcessor)
+    annotationProcessor.extendsFrom compileClasspath
 }
 
 repositories {
@@ -75,6 +63,10 @@ minecraft {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.compilerArgs.addAll([
+        "-AoutRefMapFile=${projectDir}/src/main/resources/catify.refmap.json",
+        "-AdefaultObfuscationEnv=searge"
+    ])
 }
 
 java {
@@ -94,11 +86,9 @@ jar {
 
     manifest {
         attributes(
-                'MixinConfigs': 'catify.mixins.json'
+                'MixinConfigs': 'catify.mixins.json,catify.client.mixins.json'
         )
     }
-
-    from(sourceSets.client.output)
 
     from("LICENSE") {
         rename { "${it}_${inputs.properties.archivesName}" }
@@ -114,11 +104,27 @@ publishing {
     }
 }
 
-tasks.register('printClientClasspath') {
+tasks.register('printMainClasspath') {
     doLast {
-        println("clientCompileClasspath files:")
-        configurations.clientCompileClasspath.files.each { f ->
+        println("compileClasspath files:")
+        configurations.compileClasspath.files.each { f ->
             println(" - " + f.absolutePath)
+        }
+    }
+}
+
+tasks.register('printEntityRendererMethods') {
+    doLast {
+        def cp = configurations.compileClasspath.files.collect { it.toURI().toURL() } as URL[]
+        def cl = new URLClassLoader(cp, ClassLoader.systemClassLoader)
+        try {
+            def clazz = cl.loadClass('net.minecraft.client.renderer.entity.EntityRenderer')
+            println("Class found: " + clazz.name)
+            clazz.declaredMethods.each { m ->
+                println(" - " + m.toString())
+            }
+        } catch (Exception e) {
+            e.printStackTrace()
         }
     }
 }

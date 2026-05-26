@@ -1,14 +1,14 @@
 package org.daylight.mixin.client;
 
-import net.minecraft.client.render.entity.state.CatEntityRenderState;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.entity.state.CatRenderState;
+import net.minecraft.world.entity.Entity;
 import org.daylight.CustomCatState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.UUID;
 
-@Mixin(CatEntityRenderState.class)
+@Mixin(value = CatRenderState.class, remap = false)
 public class CatEntityRenderStateMixin implements CustomCatState {
     @Unique
     private boolean catmodel$chargeActive = false;
@@ -60,15 +60,4 @@ public class CatEntityRenderStateMixin implements CustomCatState {
     public void catmodel$setCurrentEntityId(UUID entity) {
         this.catmodel$entity = entity;
     }
-
-    //    @Override
-//    public Float catmodel$getCustomTimeDelta() {
-//        return catmodel$customDelta;
-//    }
-//
-//    @Override
-//    public void catmodel$setCustomTimeDelta(Float value) {
-//        this.catmodel$customDelta = value;
-//    }
 }
-

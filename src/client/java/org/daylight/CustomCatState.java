@@ -1,6 +1,6 @@
 package org.daylight;
 
-import net.minecraft.entity.Entity;
+import net.minecraft.world.entity.Entity;
 
 import java.util.UUID;
 

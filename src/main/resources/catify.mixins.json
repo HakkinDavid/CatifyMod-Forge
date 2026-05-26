@@ -1,6 +1,7 @@
 {
 	"required": true,
 	"package": "org.daylight.mixin",
+	"refmap": "catify.refmap.json",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 	],
