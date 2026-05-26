@@ -30,6 +30,10 @@ public class ModCommands {
             "never", "vanilla", "charged"
     );
 
+    private static final List<String> CAT_SIZES = List.of(
+            "small", "normal", "large"
+    );
+
     private static CompletableFuture<Suggestions> suggestVariants(SuggestionsBuilder builder, Collection<String> variants) {
         String input = builder.getRemaining().toLowerCase(Locale.ROOT);
 
@@ -155,6 +159,25 @@ public class ModCommands {
                     )
             );
 
+        dispatcher.register(net.minecraft.commands.Commands.literal("catsize")
+                .then(net.minecraft.commands.Commands.argument("size", StringArgumentType.word())
+                        .suggests((context, builder) -> suggestVariants(builder, CAT_SIZES))
+                        .executes(context -> {
+                            Minecraft mc = Minecraft.getInstance();
+                            String sizeName = StringArgumentType.getString(context, "size");
+
+                            try {
+                                return performSetCatSize(CatSize.fromName(sizeName));
+                            } catch (IllegalArgumentException e) {
+                                if(mc != null && mc.player != null) mc.player.sendSystemMessage(
+                                        Component.literal("§cUnexpected value: §l§f" + sizeName)
+                                );
+                                return 0;
+                            }
+                        })
+                )
+        );
+
         dispatcher.register(net.minecraft.commands.Commands.literal("catinvisibility")
                     .then(net.minecraft.commands.Commands.argument("mode", StringArgumentType.word())
                             .suggests((context, builder) -> suggestVariants(builder, INVISIBILITY_MODES))
@@ -249,6 +272,19 @@ public class ModCommands {
                 Component.literal(ConfigHandler.catDamageVisible.get() ?
                         "§fNow you §a§lhave§r cat damage displayed!" :
                         "§fNow you §6§lno longer have§r cat damage displayed!")
+        );
+        return 1;
+    }
+
+    private static int performSetCatSize(CatSize size) {
+        Minecraft mc = Minecraft.getInstance();
+
+        ConfigHandler.catSize.set(size);
+        ConfigHandler.CONFIG.save();
+        PlayerToCatReplacer.setLocalCatSize(size);
+
+        if(mc != null && mc.player != null) mc.player.sendSystemMessage(
+                Component.literal("§fSet cat size to: §a§l" + size.serializedName())
         );
         return 1;
     }

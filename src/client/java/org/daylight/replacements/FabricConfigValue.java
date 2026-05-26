@@ -1,6 +1,5 @@
 package org.daylight.replacements;
 
-import org.daylight.InvisibilityBehaviour;
 import org.daylight.config.SimpleConfig;
 import org.daylight.replacements.common.IConfigValue;
 
@@ -44,8 +43,9 @@ public class FabricConfigValue<T> implements IConfigValue<T> {
         if (defaultValue instanceof String && !(raw instanceof String)) {
             cachedValue = (T) raw.toString();
             return cachedValue;
-        } if (defaultValue instanceof InvisibilityBehaviour && !(raw instanceof InvisibilityBehaviour)) {
-            cachedValue = (T) InvisibilityBehaviour.valueOf(raw.toString());
+        }
+        if (defaultValue instanceof Enum<?> defaultEnum && !(raw.getClass().isEnum())) {
+            cachedValue = (T) Enum.valueOf(defaultEnum.getDeclaringClass(), raw.toString());
             return cachedValue;
         }
 

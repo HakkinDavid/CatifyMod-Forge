@@ -51,7 +51,7 @@ public class CatifyMod {
 					CatVariantSyncPayload.playerVariants.put(payload.playerUuid(), payload);
 					net.minecraft.world.entity.player.Player player = org.daylight.util.PlayerToCatReplacer.getPlayerById(payload.playerUuid());
 					if (player != null) {
-						org.daylight.util.PlayerToCatReplacer.setupSkinForPlayer(player, payload.variant(), payload.isVanilla());
+						org.daylight.util.PlayerToCatReplacer.setupAppearanceForPlayer(player, payload.variant(), payload.isVanilla(), payload.size());
 					}
 				}
 			})

@@ -2,6 +2,8 @@ package org.daylight.util;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.client.renderer.entity.state.CatRenderState;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.resources.Identifier;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.animal.feline.Cat;
 import net.minecraft.world.entity.animal.feline.CatVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.daylight.CatSize;
 import org.daylight.CatifyModClient;
 import org.daylight.config.ConfigHandler;
 import org.daylight.config.Data;
@@ -38,6 +41,7 @@ public class PlayerToCatReplacer {
     private static final Minecraft client = Minecraft.getInstance();
     private static final Map<UUID, LivingEntity> dummyModelMap = new HashMap<>();
     private static final Map<UUID, Identifier> customCatTextureByPlayer = new HashMap<>();
+    private static final Map<UUID, CatSize> catSizeByPlayer = new HashMap<>();
     private static Level targetWorld;
 
     public static void initWorld() {
@@ -71,7 +75,7 @@ public class PlayerToCatReplacer {
             // Other players
             CatVariantSyncPayload payload = CatVariantSyncPayload.playerVariants.get(player.getUUID());
             if (payload != null) {
-                setupSkinForPlayer(player, payload.variant(), payload.isVanilla());
+                setupAppearanceForPlayer(player, payload.variant(), payload.isVanilla(), payload.size());
             } else {
                 // Fallback: pick a unique cat variant deterministically
                 List<String> variants = CatSkinManager.STATIC_VARIANTS;
@@ -83,6 +87,12 @@ public class PlayerToCatReplacer {
     }
 
     public static void setupSkinForPlayer(Player player, String variantName, boolean isVanilla) {
+        setupAppearanceForPlayer(player, variantName, isVanilla, CatSize.NORMAL);
+    }
+
+    public static void setupAppearanceForPlayer(Player player, String variantName, boolean isVanilla, CatSize size) {
+        setCatSize(player, size);
+
         Cat cat = (Cat) getCatForPlayer(player);
         if (cat == null) return;
 
@@ -105,6 +115,7 @@ public class PlayerToCatReplacer {
         dummyModelMap.values().forEach(Entity::discard);
         dummyModelMap.clear();
         customCatTextureByPlayer.clear();
+        catSizeByPlayer.clear();
     }
 
     public static boolean shouldReplace(Player player) {
@@ -162,8 +173,52 @@ public class PlayerToCatReplacer {
         LivingEntity catLivingEntity = client.player == null ? null : getCatForPlayer(client.player);
         if(catLivingEntity instanceof Cat catEntity) {
             changeCatVariant(catEntity, variant);
-            sendVariantSyncPacket(variant, true);
+            sendVariantSyncPacket(variant, true, getLocalCatSize());
         }
+    }
+
+    public static void setLocalCatSize(CatSize size) {
+        if(client.player == null) return;
+
+        setCatSize(client.player, size);
+        sendVariantSyncPacket(ConfigHandler.catVariant.getCached(), ConfigHandler.catVariantVanilla.getCached(), size);
+    }
+
+    public static void setCatSize(Player player, CatSize size) {
+        if(player != null && size != null) {
+            catSizeByPlayer.put(player.getUUID(), size);
+        }
+    }
+
+    public static CatSize getCatSize(Player player) {
+        if(player == null) return CatSize.NORMAL;
+        if(player == client.player) return getLocalCatSize();
+        return catSizeByPlayer.getOrDefault(player.getUUID(), CatSize.NORMAL);
+    }
+
+    public static CatSize getLocalCatSize() {
+        Enum<?> configured = ConfigHandler.catSize.getCached();
+        return configured instanceof CatSize catSize ? catSize : CatSize.NORMAL;
+    }
+
+    public static void applyPlayerStateToCatState(Player player, AvatarRenderState playerState, CatRenderState catState) {
+        catState.bodyRot = playerState.bodyRot;
+        catState.yRot = playerState.yRot;
+        catState.xRot = playerState.xRot;
+        catState.walkAnimationPos = playerState.walkAnimationPos;
+        catState.walkAnimationSpeed = playerState.walkAnimationSpeed;
+        catState.ageInTicks = playerState.ageInTicks;
+        catState.deathTime = playerState.deathTime;
+        catState.pose = playerState.pose;
+        catState.isInWater = playerState.isInWater;
+        catState.isAutoSpinAttack = playerState.isAutoSpinAttack;
+        catState.isFullyFrozen = playerState.isFullyFrozen;
+        catState.isUpsideDown = playerState.isUpsideDown;
+        catState.isCrouching = playerState.isCrouching;
+        catState.isSprinting = player.isSprinting() || playerState.speedValue > 0.25F;
+        catState.isSitting = player.isCrouching() && playerState.walkAnimationSpeed < 0.05F && player.onGround();
+        catState.scale *= getCatSize(player).scale();
+        catState.shadowRadius *= getCatSize(player).scale();
     }
 
     public static Identifier getCustomCatTexture(Player player) {
@@ -177,16 +232,16 @@ public class PlayerToCatReplacer {
             if(identifier == null || !GraphicsUtils.doesTextureExist(identifier)) return false;
             customCatTextureByPlayer.put(player.getUUID(), identifier);
             if (player == client.player) {
-                sendVariantSyncPacket(skinName, false);
+                sendVariantSyncPacket(skinName, false, getLocalCatSize());
             }
             return true;
         }
         return false;
     }
 
-    public static void sendVariantSyncPacket(String variant, boolean isVanilla) {
+    public static void sendVariantSyncPacket(String variant, boolean isVanilla, CatSize size) {
         if (client.getConnection() != null && client.player != null) {
-            CatifyMod.INSTANCE.send(new CatVariantSyncPayload(client.player.getUUID(), variant, isVanilla), PacketDistributor.SERVER.noArg());
+            CatifyMod.INSTANCE.send(new CatVariantSyncPayload(client.player.getUUID(), variant, isVanilla, size), PacketDistributor.SERVER.noArg());
         }
     }
 

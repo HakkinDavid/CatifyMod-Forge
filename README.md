@@ -8,8 +8,9 @@ It **only changes your model visually** and doesn't affect any interactions or p
 
 ## Cat Variant
 You can choose any cat skin. That's 11 vanila skins + any amount of custom skins.  
-  
+
 Just run **`/catvariant <name>`** to change the cat skin!  
+Use **`/catsize <small/normal/large>`** to change only the visual size of your cat model.  
 
 ![Cat Variants](images/catVariants.png)
 

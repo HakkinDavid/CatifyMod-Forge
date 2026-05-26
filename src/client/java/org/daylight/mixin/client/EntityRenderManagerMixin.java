@@ -68,6 +68,7 @@ public abstract class EntityRenderManagerMixin {
 
                 catRenderer = (CatRenderer) this.getRenderer(cat);
                 catState = catRenderer.createRenderState(cat, tickDelta);
+                PlayerToCatReplacer.applyPlayerStateToCatState(player, playerState, catState);
 
                 if(ConfigHandler.catDamageVisible.getCached()) catState.hasRedOverlay = playerState.hasRedOverlay;
                 else catState.hasRedOverlay = false;
@@ -109,6 +110,7 @@ public abstract class EntityRenderManagerMixin {
                         try {
                             float bodyYaw = catState.bodyRot;
                             matrices.translate(x, y, z);
+                            matrices.scale(catState.scale, catState.scale, catState.scale);
                             matrices.mulPose(Axis.YP.rotationDegrees(180.0F - bodyYaw));
                             matrices.scale(-1.0F, -1.0F, 1.0F);
                             matrices.translate(0.0f, -1.501f, 0.0f);
