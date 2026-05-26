@@ -3,21 +3,17 @@ package org.daylight.mixin.client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.Options;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.CatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.entity.state.*;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.feline.Cat;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.util.Mth;
 import com.mojang.math.Axis;
-import net.minecraft.world.phys.Vec3;
 import org.daylight.CatifyModClient;
 import org.daylight.CustomCatTextureHolder;
 import org.daylight.IFeatureManager;
@@ -34,8 +30,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.UUID;
 
 @Mixin(value = EntityRenderDispatcher.class, remap = false)
 public abstract class EntityRenderManagerMixin {
@@ -59,11 +53,8 @@ public abstract class EntityRenderManagerMixin {
         if(StateStorage.currentlyRenderingUi && screen != null && !WhitelistedScreensUtil.isWhitelisted(screen)) return;
 
         if(renderState instanceof AvatarRenderState playerState) {
-            if(StateStorage.currentStates.containsKey(playerState)) {
-                UUID playerUuid = StateStorage.currentStates.get(playerState);
-                if(playerUuid == null) return;
-                Player player = PlayerToCatReplacer.getPlayerById(playerUuid);
-                if(player == null) return;
+            Player player = getPlayer(playerState);
+            if(player != null) {
                 Cat cat = (Cat) PlayerToCatReplacer.getCatForPlayer(player);
                 if(cat == null) return;
 
@@ -78,7 +69,6 @@ public abstract class EntityRenderManagerMixin {
                 catRenderer = (CatRenderer) this.getRenderer(cat);
                 catState = catRenderer.createRenderState(cat, tickDelta);
 
-                if(playerState == null) playerState = (AvatarRenderState) getRenderer(player).createRenderState(player, tickDelta);
                 if(ConfigHandler.catDamageVisible.getCached()) catState.hasRedOverlay = playerState.hasRedOverlay;
                 else catState.hasRedOverlay = false;
 
@@ -92,7 +82,6 @@ public abstract class EntityRenderManagerMixin {
 
                 try {
                     matrices.pushPose();
-                    Vec3 vec3d = originalRenderer.getRenderOffset(renderState);
                     matrices.translate(x, y, z);
                     if(catRenderer instanceof CustomCatTextureHolder customCatTextureHolder) {
                         if(customCatTextureHolder.catModel$shouldUpdateCustomTexture()) {
@@ -136,6 +125,25 @@ public abstract class EntityRenderManagerMixin {
                 }
             }
         }
+    }
+
+    private Player getPlayer(AvatarRenderState playerState) {
+        if(StateStorage.currentStates.containsKey(playerState)) {
+            Player player = PlayerToCatReplacer.getPlayerById(StateStorage.currentStates.get(playerState));
+            if(player != null) {
+                return player;
+            }
+        }
+
+        Minecraft minecraft = Minecraft.getInstance();
+        if(minecraft.level != null) {
+            Entity entity = minecraft.level.getEntity(playerState.id);
+            if(entity instanceof Player player) {
+                return player;
+            }
+        }
+
+        return StateStorage.currentlyRenderingUi ? minecraft.player : null;
     }
 
     @Shadow
