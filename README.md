@@ -2,6 +2,8 @@
 
 This is a **purely client-side** mod that turns your player model **into a cat**!  
 
+This branch is the **Forge port for Minecraft 26.1** and includes visual cat size switching.  
+
 It **only changes your model visually** and doesn't affect any interactions or physics.  
 
 ![Cat Standing](images/catStanding2.png)
@@ -68,9 +70,13 @@ There should be no chance a server anticheat can notice a difference, so it's co
 - All settings that you change with commands are saved between sessions, including cat skin, cat hand, cat mode.  
 
 ## Versions
-Fabric:  
-- 1.21.2 - 1.21.10  
-- This repository branch is for versions 1.21.11+  
+Forge:  
+- Minecraft 26.1  
+- Forge 62.0.1  
+- This repository branch is the Forge port and supports visual cat resizing through `/catsize <small/normal/large>`.  
+
+Fabric:
+- The original Fabric versions targeted Minecraft 1.21.2 - 1.21.10.  
 
 Version Differences:
 1. Versions from range 1.21.2 - 1.21.4 are way less tested than usual  
