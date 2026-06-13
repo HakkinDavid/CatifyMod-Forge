@@ -1,20 +1,10 @@
 package org.daylight.mixin.client;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.network.ClientPlayerLikeEntity;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
-import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-import net.minecraft.client.texture.ResourceTexture;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.PlayerLikeEntity;
-import net.minecraft.resource.Resource;
-import net.minecraft.util.Identifier;
-import org.daylight.ModResources;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.resources.Identifier;
 import org.daylight.config.ConfigHandler;
 import org.daylight.config.Data;
 import org.daylight.util.CatVariantUtils;
@@ -27,22 +17,22 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(PlayerEntityRenderer.class)
-public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerLikeEntity & ClientPlayerLikeEntity> {
+@Mixin(AvatarRenderer.class)
+public abstract class PlayerEntityRendererMixin {
     @Inject(
-            method = "updateRenderState(Lnet/minecraft/entity/PlayerLikeEntity;Lnet/minecraft/client/render/entity/state/PlayerEntityRenderState;F)V",
+            method = "extractRenderState(Lnet/minecraft/world/entity/Avatar;Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;F)V",
             at = @At("HEAD")
     )
-    public void updateRenderState(AvatarlikeEntity playerLikeEntity, PlayerEntityRenderState state, float f, CallbackInfo ci) {
-        if(playerLikeEntity instanceof ClientPlayerEntity clientPlayerEntity && state instanceof PlayerEntityRenderState) {
-//            System.out.println("Adding from PlayerEntityRenderer: " + state);
-            StateStorage.currentStates.put(state, clientPlayerEntity.getUuid());
+    public void extractRenderState(net.minecraft.world.entity.Avatar playerLikeEntity, AvatarRenderState state, float f, CallbackInfo ci) {
+        if(playerLikeEntity instanceof LocalPlayer clientPlayerEntity) {
+            StateStorage.currentStates.put(state, clientPlayerEntity.getUUID());
         }
     }
 
     @ModifyArg(
-            method = "renderRightArm",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/PlayerEntityRenderer;renderArm(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/command/OrderedRenderCommandQueue;ILnet/minecraft/util/Identifier;Lnet/minecraft/client/model/ModelPart;Z)V")
+            method = "renderRightHand",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/player/AvatarRenderer;renderHand(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;Lnet/minecraft/client/model/geom/ModelPart;Z)V"),
+            index = 3
     )
     private Identifier replaceRightArmSkin(Identifier skinTexture) {
         if (ConfigHandler.catHandActive.getCached() && ConfigHandler.replacementActive.getCached() &&
@@ -53,8 +43,9 @@ public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerL
     }
 
     @ModifyArg(
-            method = "renderLeftArm",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/PlayerEntityRenderer;renderArm(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/command/OrderedRenderCommandQueue;ILnet/minecraft/util/Identifier;Lnet/minecraft/client/model/ModelPart;Z)V")
+            method = "renderLeftHand",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/player/AvatarRenderer;renderHand(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;Lnet/minecraft/client/model/geom/ModelPart;Z)V"),
+            index = 3
     )
     private Identifier replaceLeftArmSkin(Identifier skinTexture) {
         if (ConfigHandler.catHandActive.getCached() && ConfigHandler.replacementActive.getCached()
@@ -70,11 +61,11 @@ public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerL
             if(Data.catHandTexture != null) return Data.catHandTexture;
             else return defaultValue;
         }
-        return ModResources.CAT_HAND_BY_VARIANT.get(CatVariantUtils.deserializeVariant(ConfigHandler.catVariant.getCached()));
+        return org.daylight.ModResources.CAT_HAND_BY_VARIANT.get(CatVariantUtils.deserializeVariant(ConfigHandler.catVariant.getCached()));
     }
 
     @Unique
-    private AbstractClientPlayerEntity getPlayer() {
-        return MinecraftClient.getInstance().player;
+    private LocalPlayer getPlayer() {
+        return Minecraft.getInstance().player;
     }
 }

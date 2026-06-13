@@ -1,7 +1,7 @@
 package org.daylight.util;
 
-import net.minecraft.client.render.entity.state.EntityRenderState;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.world.entity.player.Player;
 
 import java.util.HashMap;
 import java.util.Map;

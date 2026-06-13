@@ -1,6 +1,6 @@
 package org.daylight.config;
 
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public class Data {
     public static Identifier catHandTexture = null;

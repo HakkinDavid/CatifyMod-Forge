@@ -6,7 +6,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientWorldEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.Minecraft;
 import org.daylight.config.ConfigHandler;
 import org.daylight.features.CatChargeFeatureRenderer;
 import org.daylight.util.CatSkinManager;
@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class CatifyModClient implements ClientModInitializer {
 	public static final String MOD_ID = "catify";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	private static final MinecraftClient client = MinecraftClient.getInstance();
+	private static final Minecraft client = Minecraft.getInstance();
     AtomicBoolean checked = new AtomicBoolean(false);
 
 	@Override
@@ -49,7 +49,7 @@ public class CatifyModClient implements ClientModInitializer {
 		//ClientWorldEvents.AFTER_CLIENT_WORLD_CHANGE
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 //		ServerWorldEvents.LOAD.register((server, world) -> {
-//			LOGGER.info("World loaded, initializing fake world");
+//			LOGGER.info("Level loaded, initializing fake world");
 //			if (world != null) {
 //				PlayerToCatReplacer.initFakeWorld();
 //				if (client.player != null) {
@@ -70,7 +70,7 @@ public class CatifyModClient implements ClientModInitializer {
 //		});
 
 //        WorldRenderEvents.START.register(context -> {
-//            if(!MinecraftClient.getInstance().isPaused()) {
+//            if(!Minecraft.getInstance().isPaused()) {
 //                CatChargeFeatureRenderer.moveGlobalTextureForward(context.tickCounter().getTickProgress(true));
 //            }
 //        });

@@ -2,11 +2,11 @@ package org.daylight;
 
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.resource.Resource;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.resources.Identifier;
 import org.daylight.util.CatSkinManager;
 
 import java.io.IOException;
@@ -19,11 +19,11 @@ import java.util.Map;
 public class OwnResourceReloadListener implements SimpleSynchronousResourceReloadListener {
     @Override
     public Identifier getFabricId() {
-        return Identifier.of(CatifyModClient.MOD_ID, "example_cat_texture_extractor");
+        return Identifier.fromNamespaceAndPath(CatifyModClient.MOD_ID, "example_cat_texture_extractor");
     }
 
     @Override
-    public void reload(ResourceManager manager) {
+    public void onResourceManagerReload(ResourceManager manager) {
         try {
             extractCatTextures(manager);
             extractHandTextures(manager);
@@ -35,8 +35,8 @@ public class OwnResourceReloadListener implements SimpleSynchronousResourceReloa
     private void extractCatTextures(ResourceManager manager) {
         Path outputDir = createOutputDir("example_cats");
 
-        for (String name : CatSkinManager.STATIC_VARIANTS) {
-            Identifier id = Identifier.ofVanilla("textures/entity/cat/" + name + ".png");
+        for (String name : org.daylight.util.CatSkinManager.STATIC_VARIANTS) {
+            Identifier id = Identifier.fromNamespaceAndPath("minecraft", "textures/entity/cat/" + name + ".png");
             copyResource(manager, id, outputDir, name);
         }
     }
@@ -52,7 +52,7 @@ public class OwnResourceReloadListener implements SimpleSynchronousResourceReloa
     }
 
     private Path createOutputDir(String folderName) {
-        Path outputDir = MinecraftClient.getInstance().runDirectory.toPath()
+        Path outputDir = Minecraft.getInstance().gameDirectory.toPath()
                 .resolve("data/catify/example_skins/" + folderName);
         try {
             Files.createDirectories(outputDir);
@@ -71,7 +71,7 @@ public class OwnResourceReloadListener implements SimpleSynchronousResourceReloa
             }
 
             Path outFile = outputDir.resolve(fileName + ".png");
-            try (InputStream input = resource.getInputStream()) {
+            try (InputStream input = resource.open()) {
                 Files.copy(input, outFile, StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class OwnResourceReloadListener implements SimpleSynchronousResourceReloa
     }
 
     public static void register() {
-        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES)
+        ResourceManagerHelper.get(PackType.CLIENT_RESOURCES)
                 .registerReloadListener(new OwnResourceReloadListener());
     }
 }

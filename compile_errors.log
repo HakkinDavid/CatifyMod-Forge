@@ -1,0 +1,1097 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/Users/hakkindavid/.gradle/wrapper/dists/gradle-9.5.1-bin/iq79hdu3mqx29lgffhp8bfmx/gradle-9.5.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+
+> Configure project :
+Fabric Loom: 1.17.11
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava FAILED
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IElementWVertexConsumerProvider.java:6: error: cannot find symbol
+    MultiBufferSource.Immediate getVertexConsumers();
+                     ^
+  symbol:   class Immediate
+  location: interface MultiBufferSource
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:14: error: cannot find symbol
+import net.minecraft.world.entity.animal.Cat;
+                                        ^
+  symbol:   class Cat
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:15: error: cannot find symbol
+import net.minecraft.world.entity.animal.CatVariant;
+                                        ^
+  symbol:   class CatVariant
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:20: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:71: error: cannot find symbol
+    private static Holder<CatVariant> getCatVariant(ResourceKey<CatVariant> variantKey) {
+                                                                ^
+  symbol:   class CatVariant
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:71: error: cannot find symbol
+    private static Holder<CatVariant> getCatVariant(ResourceKey<CatVariant> variantKey) {
+                          ^
+  symbol:   class CatVariant
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:83: error: cannot find symbol
+    public static void changeCatVariant(Cat cat, ResourceKey<CatVariant> variantKey) {
+                                        ^
+  symbol:   class Cat
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:83: error: cannot find symbol
+    public static void changeCatVariant(Cat cat, ResourceKey<CatVariant> variantKey) {
+                                                             ^
+  symbol:   class CatVariant
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:119: error: cannot find symbol
+    public static boolean isDummyCat(Cat catEntity) {
+                                     ^
+  symbol:   class Cat
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:123: error: cannot find symbol
+    public static void syncEntity2(Player player, Cat existingCat) {
+                                                  ^
+  symbol:   class Cat
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:144: error: cannot find symbol
+    public static void syncSittingAndLimbs(Player player, Cat existingCat) {
+                                                          ^
+  symbol:   class Cat
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:182: error: cannot find symbol
+    public static void setLocalCatVariant(ResourceKey<CatVariant> variant) {
+                                                      ^
+  symbol:   class CatVariant
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:193: error: cannot find symbol
+    public static ResourceLocation getCustomCatTexture(Player player) {
+                  ^
+  symbol:   class ResourceLocation
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:226: error: cannot find symbol
+    public static ResourceLocation loadCustomTexture(String subfolder, String skinName) {
+                  ^
+  symbol:   class ResourceLocation
+  location: class PlayerToCatReplacer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:3: error: cannot find symbol
+import net.minecraft.world.entity.animal.CatVariant;
+                                        ^
+  symbol:   class CatVariant
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:6: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:11: error: cannot find symbol
+    public static String serializeVariant(ResourceKey<CatVariant> key) {
+                                                      ^
+  symbol:   class CatVariant
+  location: class CatVariantUtils
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:15: error: cannot find symbol
+    public static ResourceKey<CatVariant> deserializeVariant(String name) {
+                              ^
+  symbol:   class CatVariant
+  location: class CatVariantUtils
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/GraphicsUtils.java:6: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/GraphicsUtils.java:9: error: cannot find symbol
+    public static boolean doesTextureExist(ResourceLocation id) {
+                                           ^
+  symbol:   class ResourceLocation
+  location: class GraphicsUtils
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/config/Data.java:3: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/config/Data.java:6: error: cannot find symbol
+    public static ResourceLocation catHandTexture = null;
+                  ^
+  symbol:   class ResourceLocation
+  location: class Data
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/ModKeyBindings.java:9: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:3: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:4: error: cannot find symbol
+import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                  ^
+  symbol:   class RenderType
+  location: package net.minecraft.client.renderer.entity.layers
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IRenderableFeature.java:3: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:16: error: cannot find symbol
+    public abstract void render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, S state, float limbAngle, float limbDistance);
+                                                    ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class FeatureRendererAccessor<S,M>
+  where S,M are type-variables:
+    S extends EntityRenderState declared in class FeatureRendererAccessor
+    M extends EntityModel<? super S> declared in class FeatureRendererAccessor
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:19: error: cannot find symbol
+    public void catify$render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                  ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class FeatureRendererAccessor<S,M>
+  where S,M are type-variables:
+    S extends EntityRenderState declared in class FeatureRendererAccessor
+    M extends EntityModel<? super S> declared in class FeatureRendererAccessor
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IRenderableFeature.java:9: error: cannot find symbol
+    void catify$render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance);
+                                           ^
+  symbol:   class OrderedRenderCommandQueue
+  location: interface IRenderableFeature<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in interface IRenderableFeature
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:8: error: cannot find symbol
+import net.minecraft.client.gui.render.EntityGuiElementRenderer;
+                                      ^
+  symbol:   class EntityGuiElementRenderer
+  location: package net.minecraft.client.gui.render
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:9: error: package net.minecraft.client.gui.render.state.special does not exist
+import net.minecraft.client.gui.render.state.special.EntityGuiElementRenderState;
+                                                    ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:12: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.RenderDispatcher;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:15: error: cannot find symbol
+import net.minecraft.client.model.OcelotModel;
+                                 ^
+  symbol:   class OcelotModel
+  location: package net.minecraft.client.model
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:16: error: cannot find symbol
+import net.minecraft.client.model.PlayerModel;
+                                 ^
+  symbol:   class PlayerModel
+  location: package net.minecraft.client.model
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:19: error: cannot find symbol
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                 ^
+  symbol:   class PlayerRenderState
+  location: package net.minecraft.client.renderer.entity.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:22: error: cannot find symbol
+import net.minecraft.world.entity.animal.Cat;
+                                        ^
+  symbol:   class Cat
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:63: error: cannot find symbol
+    protected void render(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                          ^
+  symbol:   class EntityGuiElementRenderState
+  location: class EntityGuiElementRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:189: error: cannot find symbol
+    protected void renderEnd(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                             ^
+  symbol:   class EntityGuiElementRenderState
+  location: class EntityGuiElementRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:197: error: cannot find symbol
+    protected void afterRender(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                               ^
+  symbol:   class EntityGuiElementRenderState
+  location: class EntityGuiElementRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:11: error: package net.minecraft.client.render does not exist
+import net.minecraft.client.render.*;
+                           ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:5: error: cannot find symbol
+import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                  ^
+  symbol:   class RenderType
+  location: package net.minecraft.client.renderer.entity.layers
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:4: error: cannot find symbol
+import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                  ^
+  symbol:   class RenderType
+  location: package net.minecraft.client.renderer.entity.layers
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:23: error: cannot find symbol
+    protected abstract boolean addFeature(FeatureRenderer<S, M> feature);
+                                          ^
+  symbol:   class FeatureRenderer
+  location: class LivingEntityRendererMixin<T,S,M>
+  where T,S,M are type-variables:
+    T extends LivingEntity declared in class LivingEntityRendererMixin
+    S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+    M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:27: error: cannot find symbol
+    protected List<FeatureRenderer<S, M>> features;
+                   ^
+  symbol:   class FeatureRenderer
+  location: class LivingEntityRendererMixin<T,S,M>
+  where T,S,M are type-variables:
+    T extends LivingEntity declared in class LivingEntityRendererMixin
+    S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+    M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:30: error: cannot find symbol
+    public boolean catmodel$addFeature(FeatureRenderer<?, ?> feature) {
+                                       ^
+  symbol:   class FeatureRenderer
+  location: class LivingEntityRendererMixin<T,S,M>
+  where T,S,M are type-variables:
+    T extends LivingEntity declared in class LivingEntityRendererMixin
+    S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+    M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:35: error: cannot find symbol
+    public void renderAllFeatures(LivingEntityRenderState livingEntityRenderState, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, Predicate<FeatureRenderer<?, ?>> filter) {
+                                                                                                                                                                     ^
+  symbol:   class FeatureRenderer
+  location: class LivingEntityRendererMixin<T,S,M>
+  where T,S,M are type-variables:
+    T extends LivingEntity declared in class LivingEntityRendererMixin
+    S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+    M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:6: error: cannot find symbol
+import net.minecraft.client.renderer.RenderType;
+                                    ^
+  symbol:   class RenderType
+  location: package net.minecraft.client.renderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:9: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:12: error: cannot find symbol
+import net.minecraft.client.model.OcelotModel;
+                                 ^
+  symbol:   class OcelotModel
+  location: package net.minecraft.client.model
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:21: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:34: error: cannot find symbol
+        extends EnergySwirlLayer<CatRenderState, OcelotModel> {
+                                                 ^
+  symbol: class OcelotModel
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:35: error: cannot find symbol
+    private final ResourceLocation texture;
+                  ^
+  symbol:   class ResourceLocation
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:36: error: cannot find symbol
+    private final OcelotModel model;
+                  ^
+  symbol:   class OcelotModel
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:51: error: cannot find symbol
+            RenderLayerParent<CatRenderState, OcelotModel> context,
+                                              ^
+  symbol:   class OcelotModel
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:53: error: cannot find symbol
+            ResourceLocation texture
+            ^
+  symbol:   class ResourceLocation
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:104: error: cannot find symbol
+    public void customRender(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                 ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:116: error: cannot find symbol
+    private void internalRender(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                    ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:128: error: cannot find symbol
+    public ResourceLocation getEnergySwirlTexture() {
+           ^
+  symbol:   class ResourceLocation
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:133: error: cannot find symbol
+    protected OcelotModel getEnergySwirlModel() {
+              ^
+  symbol:   class OcelotModel
+  location: class CatChargeFeatureRenderer<S>
+  where S is a type-variable:
+    S extends EntityRenderState declared in class CatChargeFeatureRenderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:12: error: cannot find symbol
+    boolean catmodel$addFeature(FeatureRenderer<?, ?> feature);
+                                ^
+  symbol:   class FeatureRenderer
+  location: interface IFeatureManager
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:13: error: cannot find symbol
+    void renderAllFeatures(LivingEntityRenderState livingEntityRenderState, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, Predicate<FeatureRenderer<?, ?>> filter);
+                                                                                                                                                              ^
+  symbol:   class FeatureRenderer
+  location: interface IFeatureManager
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:3: error: cannot find symbol
+import net.minecraft.world.entity.animal.Cat;
+                                        ^
+  symbol:   class Cat
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:4: error: cannot find symbol
+import net.minecraft.world.entity.animal.CatVariant;
+                                        ^
+  symbol:   class CatVariant
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:12: error: cannot find symbol
+    void invokeSetVariant(Holder<CatVariant> variant);
+                                 ^
+  symbol:   class CatVariant
+  location: interface CatEntityAccessor
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LimbAnimatorAccessor.java:4: error: cannot find symbol
+import net.minecraft.world.entity.animal.Cat;
+                                        ^
+  symbol:   class Cat
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LimbAnimatorAccessor.java:5: error: cannot find symbol
+import net.minecraft.world.entity.animal.CatVariant;
+                                        ^
+  symbol:   class CatVariant
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:7: error: cannot find symbol
+import net.minecraft.client.renderer.RenderType;
+                                    ^
+  symbol:   class RenderType
+  location: package net.minecraft.client.renderer
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:9: error: cannot find symbol
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+                                                  ^
+  symbol:   class PlayerRenderer
+  location: package net.minecraft.client.renderer.entity.player
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:10: error: cannot find symbol
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                 ^
+  symbol:   class PlayerRenderState
+  location: package net.minecraft.client.renderer.entity.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:14: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:29: error: cannot find symbol
+public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerLikeEntity & ClientPlayerLikeEntity> {
+                                                                         ^
+  symbol: class PlayerLikeEntity
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:29: error: cannot find symbol
+public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerLikeEntity & ClientPlayerLikeEntity> {
+                                                                                            ^
+  symbol: class ClientPlayerLikeEntity
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:34: error: cannot find symbol
+    public void updateRenderState(AvatarlikeEntity playerLikeEntity, PlayerRenderState state, float f, CallbackInfo ci) {
+                                                                     ^
+  symbol:   class PlayerRenderState
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:45: error: cannot find symbol
+    private ResourceLocation replaceRightArmSkin(ResourceLocation skinTexture) {
+                                                 ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:45: error: cannot find symbol
+    private ResourceLocation replaceRightArmSkin(ResourceLocation skinTexture) {
+            ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:57: error: cannot find symbol
+    private ResourceLocation replaceLeftArmSkin(ResourceLocation skinTexture) {
+                                                ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:57: error: cannot find symbol
+    private ResourceLocation replaceLeftArmSkin(ResourceLocation skinTexture) {
+            ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:66: error: cannot find symbol
+    private ResourceLocation getHandTexture(ResourceLocation defaultValue) {
+                                            ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:66: error: cannot find symbol
+    private ResourceLocation getHandTexture(ResourceLocation defaultValue) {
+            ^
+  symbol:   class ResourceLocation
+  location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+  where AvatarlikeEntity is a type-variable:
+    AvatarlikeEntity declared in class PlayerEntityRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/InventoryScreenMixin.java:3: error: cannot find symbol
+import net.minecraft.client.gui.GuiGraphics;
+                               ^
+  symbol:   class GuiGraphics
+  location: package net.minecraft.client.gui
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/InventoryScreenMixin.java:6: error: cannot find symbol
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                 ^
+  symbol:   class PlayerRenderState
+  location: package net.minecraft.client.renderer.entity.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:8: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:10: error: cannot find symbol
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                 ^
+  symbol:   class PlayerRenderState
+  location: package net.minecraft.client.renderer.entity.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:11: error: cannot find symbol
+import net.minecraft.client.renderer.state.LevelRenderState;
+                                          ^
+  symbol:   class LevelRenderState
+  location: package net.minecraft.client.renderer.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:16: error: package net.minecraft.world.tick does not exist
+import net.minecraft.world.tick.TickManager;
+                               ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:44: error: cannot find symbol
+    private void pushEntityRenders(PoseStack matrices, LevelRenderState renderStates, OrderedRenderCommandQueue queue, CallbackInfo ci) {
+                                                       ^
+  symbol:   class LevelRenderState
+  location: class WorldRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:44: error: cannot find symbol
+    private void pushEntityRenders(PoseStack matrices, LevelRenderState renderStates, OrderedRenderCommandQueue queue, CallbackInfo ci) {
+                                                                                      ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class WorldRendererMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRenderStateMixin.java:3: error: package net.minecraft.client.gui.render.state.special does not exist
+import net.minecraft.client.gui.render.state.special.EntityGuiElementRenderState;
+                                                    ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:7: error: package net.minecraft.client.render.command does not exist
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                          ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:11: error: cannot find symbol
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+                                                  ^
+  symbol:   class PlayerRenderer
+  location: package net.minecraft.client.renderer.entity.player
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:13: error: cannot find symbol
+import net.minecraft.client.renderer.state.CameraRenderState;
+                                          ^
+  symbol:   class CameraRenderState
+  location: package net.minecraft.client.renderer.state
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:16: error: cannot find symbol
+import net.minecraft.world.entity.animal.Cat;
+                                        ^
+  symbol:   class Cat
+  location: package net.minecraft.world.entity.animal
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:48: error: cannot find symbol
+    public abstract <S extends EntityRenderState> EntityRenderer<?, ? super S> getRenderer(S state);
+                               ^
+  symbol:   class EntityRenderState
+  location: class EntityRenderManagerMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+    private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                       ^
+  symbol:   class EntityRenderState
+  location: class EntityRenderManagerMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+    private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                                                                     ^
+  symbol:   class CameraRenderState
+  location: class EntityRenderManagerMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+    private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                                                                                                                                                            ^
+  symbol:   class OrderedRenderCommandQueue
+  location: class EntityRenderManagerMixin
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:330: error: method <S>getRenderer(S) is already defined in class EntityRenderManagerMixin
+    public abstract <T extends Entity> EntityRenderer getRenderer(T entity);
+                                                      ^
+  where S is a type-variable:
+    S declared in method <S>getRenderer(S)
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:12: error: package net.minecraft.client.render.entity.state does not exist
+import net.minecraft.client.render.entity.state.*;
+                                         ^
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/SpecialGuiElementRendererAccessor.java:3: error: cannot find symbol
+import net.minecraft.client.gui.render.SpecialGuiElementRenderer;
+                                      ^
+  symbol:   class SpecialGuiElementRenderer
+  location: package net.minecraft.client.gui.render
+/Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/SpecialGuiElementRendererAccessor.java:15: error: cannot find symbol
+    protected MultiBufferSource.Immediate vertexConsumers;
+                               ^
+  symbol:   class Immediate
+  location: interface MultiBufferSource
+Note: /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/OwnResourceReloadListener.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+100 errors
+
+[Incubating] Problems report is available at: file:///Users/hakkindavid/Documents/GitHub/CatifyMod/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  Note: /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/OwnResourceReloadListener.java uses or overrides a deprecated API.
+  Note: Recompile with -Xlint:deprecation for details.
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IElementWVertexConsumerProvider.java:6: error: cannot find symbol
+      MultiBufferSource.Immediate getVertexConsumers();
+                       ^
+    symbol:   class Immediate
+    location: interface MultiBufferSource
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:14: error: cannot find symbol
+  import net.minecraft.world.entity.animal.Cat;
+                                          ^
+    symbol:   class Cat
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:15: error: cannot find symbol
+  import net.minecraft.world.entity.animal.CatVariant;
+                                          ^
+    symbol:   class CatVariant
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:20: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:71: error: cannot find symbol
+      private static Holder<CatVariant> getCatVariant(ResourceKey<CatVariant> variantKey) {
+                                                                  ^
+    symbol:   class CatVariant
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:71: error: cannot find symbol
+      private static Holder<CatVariant> getCatVariant(ResourceKey<CatVariant> variantKey) {
+                            ^
+    symbol:   class CatVariant
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:83: error: cannot find symbol
+      public static void changeCatVariant(Cat cat, ResourceKey<CatVariant> variantKey) {
+                                          ^
+    symbol:   class Cat
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:83: error: cannot find symbol
+      public static void changeCatVariant(Cat cat, ResourceKey<CatVariant> variantKey) {
+                                                               ^
+    symbol:   class CatVariant
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:119: error: cannot find symbol
+      public static boolean isDummyCat(Cat catEntity) {
+                                       ^
+    symbol:   class Cat
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:123: error: cannot find symbol
+      public static void syncEntity2(Player player, Cat existingCat) {
+                                                    ^
+    symbol:   class Cat
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:144: error: cannot find symbol
+      public static void syncSittingAndLimbs(Player player, Cat existingCat) {
+                                                            ^
+    symbol:   class Cat
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:182: error: cannot find symbol
+      public static void setLocalCatVariant(ResourceKey<CatVariant> variant) {
+                                                        ^
+    symbol:   class CatVariant
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:193: error: cannot find symbol
+      public static ResourceLocation getCustomCatTexture(Player player) {
+                    ^
+    symbol:   class ResourceLocation
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/PlayerToCatReplacer.java:226: error: cannot find symbol
+      public static ResourceLocation loadCustomTexture(String subfolder, String skinName) {
+                    ^
+    symbol:   class ResourceLocation
+    location: class PlayerToCatReplacer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:3: error: cannot find symbol
+  import net.minecraft.world.entity.animal.CatVariant;
+                                          ^
+    symbol:   class CatVariant
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:6: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:11: error: cannot find symbol
+      public static String serializeVariant(ResourceKey<CatVariant> key) {
+                                                        ^
+    symbol:   class CatVariant
+    location: class CatVariantUtils
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/CatVariantUtils.java:15: error: cannot find symbol
+      public static ResourceKey<CatVariant> deserializeVariant(String name) {
+                                ^
+    symbol:   class CatVariant
+    location: class CatVariantUtils
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/GraphicsUtils.java:6: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/util/GraphicsUtils.java:9: error: cannot find symbol
+      public static boolean doesTextureExist(ResourceLocation id) {
+                                             ^
+    symbol:   class ResourceLocation
+    location: class GraphicsUtils
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/config/Data.java:3: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/config/Data.java:6: error: cannot find symbol
+      public static ResourceLocation catHandTexture = null;
+                    ^
+    symbol:   class ResourceLocation
+    location: class Data
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/ModKeyBindings.java:9: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:4: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                    ^
+    symbol:   class RenderType
+    location: package net.minecraft.client.renderer.entity.layers
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:16: error: cannot find symbol
+      public abstract void render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, S state, float limbAngle, float limbDistance);
+                                                      ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class FeatureRendererAccessor<S,M>
+    where S,M are type-variables:
+      S extends EntityRenderState declared in class FeatureRendererAccessor
+      M extends EntityModel<? super S> declared in class FeatureRendererAccessor
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:19: error: cannot find symbol
+      public void catify$render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                    ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class FeatureRendererAccessor<S,M>
+    where S,M are type-variables:
+      S extends EntityRenderState declared in class FeatureRendererAccessor
+      M extends EntityModel<? super S> declared in class FeatureRendererAccessor
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IRenderableFeature.java:9: error: cannot find symbol
+      void catify$render(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance);
+                                             ^
+    symbol:   class OrderedRenderCommandQueue
+    location: interface IRenderableFeature<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in interface IRenderableFeature
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:8: error: cannot find symbol
+  import net.minecraft.client.gui.render.EntityGuiElementRenderer;
+                                        ^
+    symbol:   class EntityGuiElementRenderer
+    location: package net.minecraft.client.gui.render
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:15: error: cannot find symbol
+  import net.minecraft.client.model.OcelotModel;
+                                   ^
+    symbol:   class OcelotModel
+    location: package net.minecraft.client.model
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:16: error: cannot find symbol
+  import net.minecraft.client.model.PlayerModel;
+                                   ^
+    symbol:   class PlayerModel
+    location: package net.minecraft.client.model
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:19: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                   ^
+    symbol:   class PlayerRenderState
+    location: package net.minecraft.client.renderer.entity.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:22: error: cannot find symbol
+  import net.minecraft.world.entity.animal.Cat;
+                                          ^
+    symbol:   class Cat
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:63: error: cannot find symbol
+      protected void render(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                            ^
+    symbol:   class EntityGuiElementRenderState
+    location: class EntityGuiElementRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:189: error: cannot find symbol
+      protected void renderEnd(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                               ^
+    symbol:   class EntityGuiElementRenderState
+    location: class EntityGuiElementRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:197: error: cannot find symbol
+      protected void afterRender(EntityGuiElementRenderState state, PoseStack matrices, CallbackInfo ci) {
+                                 ^
+    symbol:   class EntityGuiElementRenderState
+    location: class EntityGuiElementRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:5: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                    ^
+    symbol:   class RenderType
+    location: package net.minecraft.client.renderer.entity.layers
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:4: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.layers.RenderType;
+                                                    ^
+    symbol:   class RenderType
+    location: package net.minecraft.client.renderer.entity.layers
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:23: error: cannot find symbol
+      protected abstract boolean addFeature(FeatureRenderer<S, M> feature);
+                                            ^
+    symbol:   class FeatureRenderer
+    location: class LivingEntityRendererMixin<T,S,M>
+    where T,S,M are type-variables:
+      T extends LivingEntity declared in class LivingEntityRendererMixin
+      S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+      M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:27: error: cannot find symbol
+      protected List<FeatureRenderer<S, M>> features;
+                     ^
+    symbol:   class FeatureRenderer
+    location: class LivingEntityRendererMixin<T,S,M>
+    where T,S,M are type-variables:
+      T extends LivingEntity declared in class LivingEntityRendererMixin
+      S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+      M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:30: error: cannot find symbol
+      public boolean catmodel$addFeature(FeatureRenderer<?, ?> feature) {
+                                         ^
+    symbol:   class FeatureRenderer
+    location: class LivingEntityRendererMixin<T,S,M>
+    where T,S,M are type-variables:
+      T extends LivingEntity declared in class LivingEntityRendererMixin
+      S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+      M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LivingEntityRendererMixin.java:35: error: cannot find symbol
+      public void renderAllFeatures(LivingEntityRenderState livingEntityRenderState, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, Predicate<FeatureRenderer<?, ?>> filter) {
+                                                                                                                                                                       ^
+    symbol:   class FeatureRenderer
+    location: class LivingEntityRendererMixin<T,S,M>
+    where T,S,M are type-variables:
+      T extends LivingEntity declared in class LivingEntityRendererMixin
+      S extends LivingEntityRenderState declared in class LivingEntityRendererMixin
+      M extends EntityModel<? super S> declared in class LivingEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:6: error: cannot find symbol
+  import net.minecraft.client.renderer.RenderType;
+                                      ^
+    symbol:   class RenderType
+    location: package net.minecraft.client.renderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:12: error: cannot find symbol
+  import net.minecraft.client.model.OcelotModel;
+                                   ^
+    symbol:   class OcelotModel
+    location: package net.minecraft.client.model
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:21: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:35: error: cannot find symbol
+      private final ResourceLocation texture;
+                    ^
+    symbol:   class ResourceLocation
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:36: error: cannot find symbol
+      private final OcelotModel model;
+                    ^
+    symbol:   class OcelotModel
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:51: error: cannot find symbol
+              RenderLayerParent<CatRenderState, OcelotModel> context,
+                                                ^
+    symbol:   class OcelotModel
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:53: error: cannot find symbol
+              ResourceLocation texture
+              ^
+    symbol:   class ResourceLocation
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:104: error: cannot find symbol
+      public void customRender(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                   ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:116: error: cannot find symbol
+      private void internalRender(PoseStack matrices, OrderedRenderCommandQueue queue, int light, CatRenderState state, float limbAngle, float limbDistance) {
+                                                      ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:128: error: cannot find symbol
+      public ResourceLocation getEnergySwirlTexture() {
+             ^
+    symbol:   class ResourceLocation
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:133: error: cannot find symbol
+      protected OcelotModel getEnergySwirlModel() {
+                ^
+    symbol:   class OcelotModel
+    location: class CatChargeFeatureRenderer<S>
+    where S is a type-variable:
+      S extends EntityRenderState declared in class CatChargeFeatureRenderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:12: error: cannot find symbol
+      boolean catmodel$addFeature(FeatureRenderer<?, ?> feature);
+                                  ^
+    symbol:   class FeatureRenderer
+    location: interface IFeatureManager
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IFeatureManager.java:13: error: cannot find symbol
+      void renderAllFeatures(LivingEntityRenderState livingEntityRenderState, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i, Predicate<FeatureRenderer<?, ?>> filter);
+                                                                                                                                                                ^
+    symbol:   class FeatureRenderer
+    location: interface IFeatureManager
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:3: error: cannot find symbol
+  import net.minecraft.world.entity.animal.Cat;
+                                          ^
+    symbol:   class Cat
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:4: error: cannot find symbol
+  import net.minecraft.world.entity.animal.CatVariant;
+                                          ^
+    symbol:   class CatVariant
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/CatEntityAccessor.java:12: error: cannot find symbol
+      void invokeSetVariant(Holder<CatVariant> variant);
+                                   ^
+    symbol:   class CatVariant
+    location: interface CatEntityAccessor
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LimbAnimatorAccessor.java:4: error: cannot find symbol
+  import net.minecraft.world.entity.animal.Cat;
+                                          ^
+    symbol:   class Cat
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/LimbAnimatorAccessor.java:5: error: cannot find symbol
+  import net.minecraft.world.entity.animal.CatVariant;
+                                          ^
+    symbol:   class CatVariant
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:7: error: cannot find symbol
+  import net.minecraft.client.renderer.RenderType;
+                                      ^
+    symbol:   class RenderType
+    location: package net.minecraft.client.renderer
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:9: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+                                                    ^
+    symbol:   class PlayerRenderer
+    location: package net.minecraft.client.renderer.entity.player
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:10: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                   ^
+    symbol:   class PlayerRenderState
+    location: package net.minecraft.client.renderer.entity.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:14: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:34: error: cannot find symbol
+      public void updateRenderState(AvatarlikeEntity playerLikeEntity, PlayerRenderState state, float f, CallbackInfo ci) {
+                                                                       ^
+    symbol:   class PlayerRenderState
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:45: error: cannot find symbol
+      private ResourceLocation replaceRightArmSkin(ResourceLocation skinTexture) {
+                                                   ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:45: error: cannot find symbol
+      private ResourceLocation replaceRightArmSkin(ResourceLocation skinTexture) {
+              ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:57: error: cannot find symbol
+      private ResourceLocation replaceLeftArmSkin(ResourceLocation skinTexture) {
+                                                  ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:57: error: cannot find symbol
+      private ResourceLocation replaceLeftArmSkin(ResourceLocation skinTexture) {
+              ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:66: error: cannot find symbol
+      private ResourceLocation getHandTexture(ResourceLocation defaultValue) {
+                                              ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:66: error: cannot find symbol
+      private ResourceLocation getHandTexture(ResourceLocation defaultValue) {
+              ^
+    symbol:   class ResourceLocation
+    location: class PlayerEntityRendererMixin<AvatarlikeEntity>
+    where AvatarlikeEntity is a type-variable:
+      AvatarlikeEntity declared in class PlayerEntityRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/InventoryScreenMixin.java:3: error: cannot find symbol
+  import net.minecraft.client.gui.GuiGraphics;
+                                 ^
+    symbol:   class GuiGraphics
+    location: package net.minecraft.client.gui
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/InventoryScreenMixin.java:6: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                   ^
+    symbol:   class PlayerRenderState
+    location: package net.minecraft.client.renderer.entity.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:10: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+                                                   ^
+    symbol:   class PlayerRenderState
+    location: package net.minecraft.client.renderer.entity.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:11: error: cannot find symbol
+  import net.minecraft.client.renderer.state.LevelRenderState;
+                                            ^
+    symbol:   class LevelRenderState
+    location: package net.minecraft.client.renderer.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:44: error: cannot find symbol
+      private void pushEntityRenders(PoseStack matrices, LevelRenderState renderStates, OrderedRenderCommandQueue queue, CallbackInfo ci) {
+                                                         ^
+    symbol:   class LevelRenderState
+    location: class WorldRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:44: error: cannot find symbol
+      private void pushEntityRenders(PoseStack matrices, LevelRenderState renderStates, OrderedRenderCommandQueue queue, CallbackInfo ci) {
+                                                                                        ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class WorldRendererMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:11: error: cannot find symbol
+  import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+                                                    ^
+    symbol:   class PlayerRenderer
+    location: package net.minecraft.client.renderer.entity.player
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:13: error: cannot find symbol
+  import net.minecraft.client.renderer.state.CameraRenderState;
+                                            ^
+    symbol:   class CameraRenderState
+    location: package net.minecraft.client.renderer.state
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:16: error: cannot find symbol
+  import net.minecraft.world.entity.animal.Cat;
+                                          ^
+    symbol:   class Cat
+    location: package net.minecraft.world.entity.animal
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:48: error: cannot find symbol
+      public abstract <S extends EntityRenderState> EntityRenderer<?, ? super S> getRenderer(S state);
+                                 ^
+    symbol:   class EntityRenderState
+    location: class EntityRenderManagerMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+      private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                         ^
+    symbol:   class EntityRenderState
+    location: class EntityRenderManagerMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+      private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                                                                       ^
+    symbol:   class CameraRenderState
+    location: class EntityRenderManagerMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:212: error: cannot find symbol
+      private <S extends EntityRenderState> void render(S renderState, CameraRenderState cameraRenderState, double x, double y, double z, PoseStack matrices, OrderedRenderCommandQueue orderedRenderCommandQueue, CallbackInfo ci) throws IllegalAccessException {
+                                                                                                                                                              ^
+    symbol:   class OrderedRenderCommandQueue
+    location: class EntityRenderManagerMixin
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/SpecialGuiElementRendererAccessor.java:3: error: cannot find symbol
+  import net.minecraft.client.gui.render.SpecialGuiElementRenderer;
+                                        ^
+    symbol:   class SpecialGuiElementRenderer
+    location: package net.minecraft.client.gui.render
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/SpecialGuiElementRendererAccessor.java:15: error: cannot find symbol
+      protected MultiBufferSource.Immediate vertexConsumers;
+                                 ^
+    symbol:   class Immediate
+    location: interface MultiBufferSource
+  Note: Recompile with -Xlint:unchecked for details.
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:34: error: cannot find symbol
+          extends EnergySwirlLayer<CatRenderState, OcelotModel> {
+                                                   ^
+    symbol: class OcelotModel
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:29: error: cannot find symbol
+  public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerLikeEntity & ClientPlayerLikeEntity> {
+                                                                           ^
+    symbol: class PlayerLikeEntity
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/PlayerEntityRendererMixin.java:29: error: cannot find symbol
+  public abstract class PlayerEntityRendererMixin<AvatarlikeEntity extends PlayerLikeEntity & ClientPlayerLikeEntity> {
+                                                                                              ^
+    symbol: class ClientPlayerLikeEntity
+  Note: Some input files use unchecked or unsafe operations.
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:330: error: method <S>getRenderer(S) is already defined in class EntityRenderManagerMixin
+      public abstract <T extends Entity> EntityRenderer getRenderer(T entity);
+                                                        ^
+    where S is a type-variable:
+      S declared in method <S>getRenderer(S)
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/FeatureRendererAccessor.java:3: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/IRenderableFeature.java:3: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:9: error: package net.minecraft.client.gui.render.state.special does not exist
+  import net.minecraft.client.gui.render.state.special.EntityGuiElementRenderState;
+                                                      ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:12: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.RenderDispatcher;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRendererMixin.java:11: error: package net.minecraft.client.render does not exist
+  import net.minecraft.client.render.*;
+                             ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/features/CatChargeFeatureRenderer.java:9: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:8: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/WorldRendererMixin.java:16: error: package net.minecraft.world.tick does not exist
+  import net.minecraft.world.tick.TickManager;
+                                 ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityGuiElementRenderStateMixin.java:3: error: package net.minecraft.client.gui.render.state.special does not exist
+  import net.minecraft.client.gui.render.state.special.EntityGuiElementRenderState;
+                                                      ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:7: error: package net.minecraft.client.render.command does not exist
+  import net.minecraft.client.render.command.OrderedRenderCommandQueue;
+                                            ^
+  /Users/hakkindavid/Documents/GitHub/CatifyMod/src/client/java/org/daylight/mixin/client/EntityRenderManagerMixin.java:12: error: package net.minecraft.client.render.entity.state does not exist
+  import net.minecraft.client.render.entity.state.*;
+                                           ^
+  100 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 835ms
+3 actionable tasks: 1 executed, 2 up-to-date

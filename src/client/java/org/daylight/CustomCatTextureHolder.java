@@ -1,6 +1,6 @@
 package org.daylight;
 
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public interface CustomCatTextureHolder {
     Identifier catModel$getCustomTexture();
