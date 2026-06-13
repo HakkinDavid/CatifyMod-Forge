@@ -44,9 +44,16 @@ public class FabricConfigValue<T> implements IConfigValue<T> {
         if (defaultValue instanceof String && !(raw instanceof String)) {
             cachedValue = (T) raw.toString();
             return cachedValue;
-        } if (defaultValue instanceof InvisibilityBehaviour && !(raw instanceof InvisibilityBehaviour)) {
-            cachedValue = (T) InvisibilityBehaviour.valueOf(raw.toString());
-            return cachedValue;
+        }
+        if (defaultValue instanceof Enum<?> enumDefault && !(raw.getClass().isInstance(enumDefault))) {
+            Class enumClass = enumDefault.getDeclaringClass();
+            try {
+                cachedValue = (T) Enum.valueOf(enumClass, raw.toString());
+                return cachedValue;
+            } catch (IllegalArgumentException e) {
+                cachedValue = defaultValue;
+                return defaultValue;
+            }
         }
 
         // fallback

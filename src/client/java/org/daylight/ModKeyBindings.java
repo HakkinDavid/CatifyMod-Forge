@@ -1,7 +1,7 @@
 package org.daylight;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -17,7 +17,7 @@ public class ModKeyBindings {
     private static boolean prevWhitelistDown = false;
 
     public static void register() {
-        CHANGE_SCREEN_WHITELIST_STATE = KeyBindingHelper.registerKeyBinding(new KeyMapping(
+        CHANGE_SCREEN_WHITELIST_STATE = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key." + CatifyModClient.MOD_ID + ".change_screen_whitelist_state",
                 InputConstants.Type.KEYSYM,
                 InputConstants.UNKNOWN.getValue(),
@@ -28,7 +28,7 @@ public class ModKeyBindings {
             if (client == null || client.getWindow() == null) return;
             Window window = client.getWindow();
 
-            InputConstants.Key whitelistScreenKey = KeyBindingHelper.getBoundKeyOf(CHANGE_SCREEN_WHITELIST_STATE);
+            InputConstants.Key whitelistScreenKey = KeyMappingHelper.getBoundKeyOf(CHANGE_SCREEN_WHITELIST_STATE);
             if (whitelistScreenKey.getType() == InputConstants.Type.KEYSYM) {
                 if(whitelistScreenKey.getValue() != -1) {
                     boolean down = InputConstants.isKeyDown(window, whitelistScreenKey.getValue());

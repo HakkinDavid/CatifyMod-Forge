@@ -4,7 +4,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.Minecraft;
@@ -16,6 +16,7 @@ import org.daylight.config.Data;
 import org.daylight.util.CatSkinManager;
 import org.daylight.util.CatVariantUtils;
 import org.daylight.util.PlayerToCatReplacer;
+import org.daylight.CatSize;
 
 import java.util.Collection;
 import java.util.List;
@@ -33,6 +34,10 @@ public class ModCommands {
             "never", "vanilla", "charged"
     );
 
+    private static final List<String> CAT_SIZES = List.of(
+            "small", "normal", "large"
+    );
+
     private static CompletableFuture<Suggestions> suggestVariants(SuggestionsBuilder builder, Collection<String> variants) {
         String input = builder.getRemaining().toLowerCase(Locale.ROOT);
 
@@ -47,8 +52,8 @@ public class ModCommands {
 
     public static void register() {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(ClientCommandManager.literal("catvariant")
-                    .then(ClientCommandManager.argument("variant", StringArgumentType.word())
+            dispatcher.register(ClientCommands.literal("catvariant")
+                    .then(ClientCommands.argument("variant", StringArgumentType.word())
                             .suggests((context, builder) -> suggestVariants(builder, CatSkinManager.ALL_VARIANTS))
                             .executes(context -> {
                                 Minecraft client = Minecraft.getInstance();
@@ -111,9 +116,9 @@ public class ModCommands {
                     )
             );
 
-            dispatcher.register(ClientCommandManager.literal("catmode")
+            dispatcher.register(ClientCommands.literal("catmode")
                 .executes(context -> performSetCatActive(!ConfigHandler.replacementActive.get()))
-                .then(ClientCommandManager.argument("state", StringArgumentType.word())
+                .then(ClientCommands.argument("state", StringArgumentType.word())
                     .suggests((context, builder) -> suggestVariants(builder, MODES_OF_OFF))
                     .executes(context -> {
                         Boolean state = getOnOffState(context, "state");
@@ -123,9 +128,9 @@ public class ModCommands {
                 )
             );
 
-            dispatcher.register(ClientCommandManager.literal("cathand")
+            dispatcher.register(ClientCommands.literal("cathand")
                     .executes(context -> performSetCatHandActive(!ConfigHandler.catHandActive.get()))
-                    .then(ClientCommandManager.argument("state", StringArgumentType.word())
+                    .then(ClientCommands.argument("state", StringArgumentType.word())
                             .suggests((context, builder) -> suggestVariants(builder, MODES_OF_OFF))
                             .executes(context -> {
                                 Boolean state = getOnOffState(context, "state");
@@ -142,9 +147,9 @@ public class ModCommands {
                     )
             );
 
-            dispatcher.register(ClientCommandManager.literal("catdamage")
+            dispatcher.register(ClientCommands.literal("catdamage")
                     .executes(context -> performSetCatDamageVisible(!ConfigHandler.catDamageVisible.get()))
-                    .then(ClientCommandManager.argument("visible", StringArgumentType.word())
+                    .then(ClientCommands.argument("visible", StringArgumentType.word())
                             .suggests((context, builder) -> suggestVariants(builder, MODES_OF_OFF))
                             .executes(context -> {
                                 Boolean state = getOnOffState(context, "visible");
@@ -154,8 +159,27 @@ public class ModCommands {
                     )
             );
 
-            dispatcher.register(ClientCommandManager.literal("catinvisibility")
-                    .then(ClientCommandManager.argument("mode", StringArgumentType.word())
+            dispatcher.register(ClientCommands.literal("catsize")
+                    .then(ClientCommands.argument("size", StringArgumentType.word())
+                            .suggests((context, builder) -> suggestVariants(builder, CAT_SIZES))
+                            .executes(context -> {
+                                Minecraft mc = Minecraft.getInstance();
+                                String sizeName = StringArgumentType.getString(context, "size");
+
+                                try {
+                                    return performSetCatSize(CatSize.fromName(sizeName));
+                                } catch (IllegalArgumentException e) {
+                                    if(mc != null && mc.player != null) mc.player.sendSystemMessage(
+                                            Component.literal("§cUnexpected value: §l§f" + sizeName)
+                                    );
+                                    return 0;
+                                }
+                            })
+                    )
+            );
+
+            dispatcher.register(ClientCommands.literal("catinvisibility")
+                    .then(ClientCommands.argument("mode", StringArgumentType.word())
                             .suggests((context, builder) -> suggestVariants(builder, INVISIBILITY_MODES))
                             .executes(context -> {
                                 Minecraft mc = Minecraft.getInstance();
@@ -180,7 +204,7 @@ public class ModCommands {
                     )
             );
 
-//            dispatcher.register(ClientCommandManager.literal("cattest")
+//            dispatcher.register(ClientCommands.literal("cattest")
 //                .executes(context -> {
 //                    Minecraft mc = Minecraft.getInstance();
 //
@@ -249,6 +273,19 @@ public class ModCommands {
                 Component.literal(ConfigHandler.catDamageVisible.get() ?
                         "§fNow you §a§lhave§r cat damage displayed!" :
                         "§fNow you §6§lno longer have§r cat damage displayed!")
+        );
+        return 1;
+    }
+
+    private static int performSetCatSize(CatSize size) {
+        Minecraft mc = Minecraft.getInstance();
+
+        ConfigHandler.catSize.set(size);
+        ConfigHandler.CONFIG.save();
+        PlayerToCatReplacer.setLocalCatSize(size);
+
+        if(mc != null && mc.player != null) mc.player.sendSystemMessage(
+                Component.literal("§fSet cat size to: §a§l" + size.serializedName())
         );
         return 1;
     }

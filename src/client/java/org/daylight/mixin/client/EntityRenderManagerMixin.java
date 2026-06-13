@@ -44,7 +44,7 @@ public abstract class EntityRenderManagerMixin {
     public Options options;
 
     @Inject(
-            method = "submit(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lnet/minecraft/client/renderer/state/level/CameraRenderState;DDDLcom/mojang/blaze3d.vertex.PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;)V",
+            method = "submit(Lnet/minecraft/client/renderer/entity/state/EntityRenderState;Lnet/minecraft/client/renderer/state/level/CameraRenderState;DDDLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;)V",
             at = @At("HEAD"),
             cancellable = true
     )
@@ -82,6 +82,10 @@ public abstract class EntityRenderManagerMixin {
                 catRenderer = (CatRenderer) dispatcher.getRenderer(cat);
                 catState = catRenderer.createRenderState(cat, tickDelta);
 
+                float playerScale = PlayerToCatReplacer.getCatSize(player).scale();
+                catState.scale *= playerScale;
+                catState.shadowRadius *= playerScale;
+
                 AvatarRenderState updatedPlayerState = (AvatarRenderState) dispatcher.getRenderer(player).createRenderState(player, tickDelta);
                 if(ConfigHandler.catDamageVisible.getCached()) catState.hasRedOverlay = updatedPlayerState.hasRedOverlay;
                 else catState.hasRedOverlay = false;
@@ -113,7 +117,7 @@ public abstract class EntityRenderManagerMixin {
                     }
 
                     if (!renderState.shadowPieces.isEmpty()) {
-                        submitNodeCollector.submitShadow(matrices, renderState.shadowRadius, renderState.shadowPieces);
+                        submitNodeCollector.submitShadow(matrices, renderState.shadowRadius * playerScale, renderState.shadowPieces);
                     }
                 } catch (ClassCastException e) {
                     CatifyModClient.LOGGER.error("The renderer is most likely not a EntityRenderer<Cat, EntityRenderState>", e);
@@ -130,6 +134,7 @@ public abstract class EntityRenderManagerMixin {
                         try {
                             float bodyYaw = catState.bodyRot;
                             matrices.translate(x, y, z);
+                            matrices.scale(playerScale, playerScale, playerScale);
                             matrices.mulPose(Axis.YP.rotationDegrees(180.0F - bodyYaw));
                             matrices.scale(-1.0F, -1.0F, 1.0F);
                             matrices.translate(0.0f, -1.501f, 0.0f);
